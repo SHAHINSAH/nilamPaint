@@ -1,125 +1,132 @@
 export default function ProductCategories() {
-  const products = [
+  const categories = [
     {
-      icon: "🎨",
       title: "Interior Paints",
-      description: "Elegant finishes for beautiful indoor spaces.",
+      image: "/images/interior-paint.png",
+      count: "50+ Products",
     },
     {
-      icon: "🏠",
       title: "Exterior Paints",
-      description: "Weather-resistant protection for exterior walls.",
+      image: "/images/exterior-paint.png",
+      count: "35+ Products",
     },
     {
-      icon: "✨",
-      title: "Luxury Emulsions",
-      description: "Premium smooth finish with rich colour depth.",
+      title: "Putty & Primer",
+      image: "/images/putty-primer.png",
+      count: "20+ Products",
     },
     {
-      icon: "🌟",
-      title: "Premium Emulsions",
-      description: "Long-lasting beauty with easy maintenance.",
-    },
-    {
-      icon: "🪵",
-      title: "Wood Coatings",
-      description: "Protect and enhance natural wood surfaces.",
-    },
-    {
-      icon: "🛋️",
-      title: "Wood Finishes",
-      description: "Stylish finishes for furniture and interiors.",
-    },
-    {
-      icon: "💧",
       title: "Waterproofing",
-      description: "Keep your walls and roofs leak-free.",
+      image: "/images/waterproofing.png",
+      count: "25+ Products",
     },
     {
-      icon: "🛡️",
-      title: "Wall Primers",
-      description: "Strong foundation for a perfect paint finish.",
+      title: "Wood Coatings",
+      image: "/images/wood-coating.png",
+      count: "15+ Products",
     },
     {
-      icon: "🔩",
-      title: "Metal Primers",
-      description: "Rust protection and superior adhesion.",
-    },
-    {
-      icon: "🎭",
       title: "Texture Paints",
-      description: "Creative wall textures for unique designs.",
+      image: "/images/texture-paint.png",
+      count: "18+ Products",
     },
     {
-      icon: "🏆",
       title: "Designer Finishes",
-      description: "Exclusive decorative finishes for luxury homes.",
+      image: "/images/designer-finish.png",
+      count: "12+ Products",
     },
     {
-      icon: "🎯",
-      title: "Distempers",
-      description: "Affordable and durable wall coating solutions.",
-    },
-    {
-      icon: "🚪",
-      title: "Enamels",
-      description: "Glossy protection for doors and windows.",
-    },
-    {
-      icon: "🏭",
-      title: "Industrial Paints",
-      description: "Heavy-duty coatings for industrial environments.",
-    },
-    {
-      icon: "🖌️",
       title: "Paint Accessories",
-      description: "Brushes, rollers and tools for perfect application.",
+      image: "/images/accessories.png",
+      count: "30+ Products",
     },
   ];
 
   return (
-    <section className="bg-gray-50 py-12 md:py-20">
+    <section className="py-14 md:py-20 bg-linear-to-b from-white to-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
 
         {/* Heading */}
         <div className="text-center mb-10">
-          <span className="text-red-600 font-semibold uppercase tracking-wider">
-            Our Categories
+          <span className="text-red-600 font-semibold tracking-widest uppercase">
+            Product Categories
           </span>
 
-          <h2 className="text-3xl md:text-5xl font-bold mt-2 text-gray-800">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-2">
             Explore Our Products
           </h2>
 
-          <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-            Premium paint solutions for homes, offices and commercial projects.
+          <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+            Complete painting solutions including paints,
+            primers, putty, waterproofing and accessories.
           </p>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+        {/* Mobile Scroll */}
+        <div className="md:hidden flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
 
-          {products.map((product) => (
+          {categories.map((item) => (
             <div
-              key={product.title}
-              className="bg-white rounded-2xl p-4 md:p-6 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+              key={item.title}
+              className="min-w-65 bg-white rounded-3xl shadow-lg overflow-hidden"
             >
-              <div className="text-4xl mb-3">
-                {product.icon}
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-44 w-full object-cover"
+              />
+
+              <div className="p-5">
+                <h3 className="font-bold text-lg text-gray-800">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm text-gray-500 mt-1">
+                  {item.count}
+                </p>
+
+                <button className="mt-4 bg-red-600 text-white px-4 py-2 rounded-xl w-full">
+                  View Products
+                </button>
               </div>
-
-              <h3 className="font-bold text-gray-800 text-sm md:text-lg">
-                {product.title}
-              </h3>
-
-              <p className="text-xs md:text-sm text-gray-500 mt-2">
-                {product.description}
-              </p>
             </div>
           ))}
 
         </div>
 
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
+
+          {categories.map((item) => (
+            <div
+              key={item.title}
+              className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500"
+            >
+              <div className="overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-60 w-full object-cover group-hover:scale-110 transition duration-700"
+                />
+              </div>
+
+              <div className="p-6">
+                <h3 className="font-bold text-xl text-gray-800">
+                  {item.title}
+                </h3>
+
+                <p className="text-gray-500 mt-2">
+                  {item.count}
+                </p>
+
+                <button className="mt-5 w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-medium">
+                  View Products
+                </button>
+              </div>
+            </div>
+          ))}
+
+        </div>
       </div>
     </section>
   );
